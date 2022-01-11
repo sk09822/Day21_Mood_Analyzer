@@ -4,7 +4,7 @@ public class MoodAnalyzer {
     public MoodAnalyzer() {
     }
 
-    public String MoodAnalyzer(String message) {
+    public String analyzerMood(String message) {
         if (message.contains("Sad"))
             return "SAD";
         else
