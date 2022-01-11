@@ -1,26 +1,17 @@
+import com.blz.day19.MoodAnalysisException;
 import com.blz.day19.MoodAnalyzer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MoodAnalyzerTest {
     @Test
-    public void givenMessage_SadMood_Should_Return_Sad() {
-        MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am In a Sad Mood");
-        String mood = moodAnalyzer.analyseMood();
-        Assertions.assertEquals("SAD", mood);
-    }
-
-    @Test
-    public void givenMessage_AnyMood_Should_Return_HAPPY() {
-        MoodAnalyzer moodAnalyser = new MoodAnalyzer("I am in Happy Mood");
-        String mood = moodAnalyser.analyseMood();
-        Assertions.assertEquals("HAPPY", mood);
-    }
-
-    @Test
-    public void given_NULLMood_Should_Return_HAPPY() {
+    public void given_NullMood_Should_Throw_MoodAnalysisException() {
         MoodAnalyzer moodAnalyser = new MoodAnalyzer(null);
-        String mood = moodAnalyser.analyseMood();
-        Assertions.assertEquals("HAPPY", mood);
+        String mood;
+        try {
+            mood = moodAnalyser.analyseMood();
+        } catch (MoodAnalysisException e) {
+            Assertions.assertEquals(MoodAnalysisException.Exception_Type.NULL,e.type);
+        }
     }
 }
